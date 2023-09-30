@@ -1,0 +1,29 @@
+body {
+  font-family: 'Ubuntu Mono', monospace, Arial;
+  background-color: lightpink;
+}
+
+.top-nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
+  background-color: grey;
+  font-size: larger;
+}
+
+.top-nav-element {
+  text-align: center;
+  flex-shrink: 0;
+  flex: 1;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  padding: 1em;
+}
+
+a:hover {
+  background-color: rgb(201, 199, 199);
+}

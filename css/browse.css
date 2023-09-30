@@ -1,0 +1,58 @@
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    padding: 1%;
+}
+
+.book-search-bar {
+    width: 10%;
+    padding: 0.5%;
+    margin-top: 0.5%;
+}
+
+.books-container {
+    padding: 0.5%;
+    margin: 0.5%;
+}
+
+.book-name {
+    text-decoration: underline;
+    font-size: large;
+}
+
+.book-name::before {
+    content: "Name: ";
+}
+
+.book-genre::before {
+    content: "Genre: ";
+}
+
+.book-author::before {
+    content: "Author: ";
+}
+
+.book-name::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.book-genre::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.book-author::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.book-entry:after {
+    content: "\a";
+    white-space: pre;
+}
+
+/*
+
+*/
