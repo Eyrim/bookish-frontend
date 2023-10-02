@@ -1,22 +1,24 @@
 window.onload = () => {
-    fetch("http://localhost:8080/books", {
-            method: "GET",
-            //mode: "cors",
-            headers: {
-                "Access-Control-Allow-Origin": '*'
-            }
+    let cachedBookData;
+
+    const clearBookTags = function() {
+        let bookContainer = document.getElementById("books-container");
+        while (bookContainer.firstChild) {
+            bookContainer.removeChild(bookContainer.firstChild);
         }
-    )
-    .then((data) => data.json())
-    .then((json) => {
+    }
+
+    const setBookDataTags = function(json) {
+        if (json == null) {
+            console.error("No input data");
+            return;
+        }
         let bookContainer = document.getElementById("books-container");
         let bookEntry;
         let bookNameElement;
         let bookGenreElement;
         let bookAuthorElement;
-        let toAppend = "";
         let counter = 0;
-        console.log(json);
 
         for (const val of json) {
             bookEntry = document.createElement('span');
@@ -42,6 +44,47 @@ window.onload = () => {
             bookEntry.appendChild(bookAuthorElement);
             bookContainer.appendChild(bookEntry);
         }
+    }
+
+    // When the user submits the field
+    document.getElementById("book-search-bar").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            if (event.target.value === "") {
+                clearBookTags();
+                setBookDataTags(cachedBookData);
+                return;
+            }
+
+            let url = "http://localhost:8080/books/search/";
+            url += event.target.value;
+
+            fetch(url, {
+                method: "GET",
+                headers: {
+                    "Access-Control-Allow-Origin": '*'
+                }
+            })
+            .then((data) => data.json())
+            .then((json) => {
+                // Clear bookContainer
+                clearBookTags();
+                setBookDataTags(json);
+            })
+            .catch((err) => console.error(err));
+        }
+    });
+
+    fetch("http://localhost:8080/books", {
+            method: "GET",
+            headers: {
+                "Access-Control-Allow-Origin": '*'
+            }
+        }
+    )
+    .then((data) => data.json())
+    .then((json) => {
+        cachedBookData = json;
+        setBookDataTags(json);
     })
     .catch((err) => console.error(err));
 }
