@@ -10,6 +10,7 @@ body {
   flex-direction: row;
   background-color: grey;
   font-size: larger;
+  border-radius: 25px;
 }
 
 .top-nav-element {
@@ -17,6 +18,7 @@ body {
   flex-shrink: 0;
   flex: 1;
   color: black;
+  border-radius: 25px;
 }
 
 a {

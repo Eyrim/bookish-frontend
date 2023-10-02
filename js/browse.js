@@ -1,5 +1,5 @@
 window.onload = () => {
-    let cachedBookData;
+    let cachedBookData = {};
 
     const clearBookTags = function() {
         let bookContainer = document.getElementById("books-container");
@@ -13,11 +13,15 @@ window.onload = () => {
             console.error("No input data");
             return;
         }
+        console.log(json);
+
         let bookContainer = document.getElementById("books-container");
         let bookEntry;
         let bookNameElement;
         let bookGenreElement;
         let bookAuthorElement;
+        let bookArtContainer;
+        let bookArtElement;
         let counter = 0;
 
         for (const val of json) {
@@ -27,21 +31,34 @@ window.onload = () => {
 
             bookNameElement = document.createElement('span');
             bookNameElement.className = "book-name";
+            bookNameElement.id = `book-name-${counter}`;
             
             bookGenreElement = document.createElement('span');
             bookGenreElement.className = "book-genre";
+            bookGenreElement.id = `book-genre-${counter}`;
 
             bookAuthorElement = document.createElement('span');
             bookAuthorElement.className = "book-author";
+            bookAuthorElement.id = `book-id-${counter}`;
+
+            bookArtContainer = document.createElement('span');
+            bookArtContainer.className = "book-art-container";
+            bookArtContainer.id = `book-art-container-${counter}`;
+
+            bookArtElement = document.createElement('img');
+            bookArtElement.src = val.coverArtUrl;
+            bookArtElement.className = "book-art-element";
+            bookArtElement.id = `book-art-element-${counter}`;
 
             bookNameElement.innerText = val.bookName;
             bookGenreElement.innerText = val.genre;
-            //TODO: Join author and book tables serverside to get author name in this request
             bookAuthorElement.innerText = val.author.name;
 
+            bookArtContainer.appendChild(bookArtElement);
             bookEntry.appendChild(bookNameElement);
             bookEntry.appendChild(bookGenreElement);
             bookEntry.appendChild(bookAuthorElement);
+            bookEntry.appendChild(bookArtContainer);
             bookContainer.appendChild(bookEntry);
         }
     }
