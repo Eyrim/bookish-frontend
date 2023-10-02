@@ -14,6 +14,21 @@
 .books-container {
     padding: 0.5%;
     margin: 0.5%;
+    display: flex;
+    flex-direction: column;
+}
+    
+.book-entry {
+    display: flex;
+    flex-direction: row;
+}
+
+.book-text-container {
+    flex-direction: column;
+}
+
+.book-art-container {
+    margin-left: 10%;
 }
 
 .book-name {
@@ -34,6 +49,10 @@
 }
 
 .book-art-container {
+    align-self: center;
+}
+
+.book-art-element {
 
 }
 

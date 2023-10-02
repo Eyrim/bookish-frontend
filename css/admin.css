@@ -1,0 +1,12 @@
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    padding: 1%;
+}
+
+#member-name-entry {
+    width: 10%;
+    padding: 0.5%;
+    margin-top: 0.5%;
+}

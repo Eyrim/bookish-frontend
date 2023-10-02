@@ -13,10 +13,10 @@ window.onload = () => {
             console.error("No input data");
             return;
         }
-        console.log(json);
 
         let bookContainer = document.getElementById("books-container");
         let bookEntry;
+        let bookTextContainer;
         let bookNameElement;
         let bookGenreElement;
         let bookAuthorElement;
@@ -25,7 +25,10 @@ window.onload = () => {
         let counter = 0;
 
         for (const val of json) {
-            bookEntry = document.createElement('span');
+            bookTextContainer = document.createElement('div');
+            bookTextContainer.className = "book-text-container";
+
+            bookEntry = document.createElement('div');
             bookEntry.className = "book-entry";
             bookEntry.id = `book-entry-${counter}`;
 
@@ -41,7 +44,7 @@ window.onload = () => {
             bookAuthorElement.className = "book-author";
             bookAuthorElement.id = `book-id-${counter}`;
 
-            bookArtContainer = document.createElement('span');
+            bookArtContainer = document.createElement('div');
             bookArtContainer.className = "book-art-container";
             bookArtContainer.id = `book-art-container-${counter}`;
 
@@ -55,11 +58,17 @@ window.onload = () => {
             bookAuthorElement.innerText = val.author.name;
 
             bookArtContainer.appendChild(bookArtElement);
-            bookEntry.appendChild(bookNameElement);
-            bookEntry.appendChild(bookGenreElement);
-            bookEntry.appendChild(bookAuthorElement);
+
+            bookTextContainer.appendChild(bookNameElement);
+            bookTextContainer.appendChild(bookGenreElement);
+            bookTextContainer.appendChild(bookAuthorElement);
+
+            bookEntry.appendChild(bookTextContainer)
             bookEntry.appendChild(bookArtContainer);
+            
             bookContainer.appendChild(bookEntry);
+        
+            counter++;
         }
     }
 
