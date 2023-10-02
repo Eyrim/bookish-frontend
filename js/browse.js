@@ -35,7 +35,7 @@ window.onload = () => {
             bookNameElement.innerText = val.bookName;
             bookGenreElement.innerText = val.genre;
             //TODO: Join author and book tables serverside to get author name in this request
-            bookAuthorElement.innerText = val.authorId;
+            bookAuthorElement.innerText = val.author.name;
 
             bookEntry.appendChild(bookNameElement);
             bookEntry.appendChild(bookGenreElement);
